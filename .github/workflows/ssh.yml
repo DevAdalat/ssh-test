@@ -1,0 +1,19 @@
+name: Flutter release
+
+on: [push]
+
+jobs:
+   build:
+     name: Test, build and release
+     runs-on: ubuntu-latest
+     steps:
+        - name: Git clone
+          uses: actions/checkout@v1
+        - name: Start SSH via ngrok
+          uses: P3TERX/ssh2actions@main
+          with:
+            mode: ngrok
+            env: 
+            NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
+            NGROK_REGION: us
+            SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
