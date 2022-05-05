@@ -12,8 +12,8 @@ jobs:
         - name: Start SSH via ngrok
           uses: P3TERX/ssh2actions@main
           with:
-            mode: ngrok
-            env: 
+           mode: ngrok
+          env:
             NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
             NGROK_REGION: us
             SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
