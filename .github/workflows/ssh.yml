@@ -9,11 +9,5 @@ jobs:
      steps:
         - name: Git clone
           uses: actions/checkout@v1
-        - name: Start SSH via ngrok
-          uses: P3TERX/ssh2actions@main
-          with:
-           mode: ngrok
-          env:
-            NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
-            NGROK_REGION: us
-            SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        - name: Start SSH session
+          run: ./test
