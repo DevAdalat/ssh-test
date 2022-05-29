@@ -10,4 +10,7 @@ jobs:
         - name: Git clone
           uses: actions/checkout@v1
         - name: Start SSH session
+        - name: Permission
+          run: chmod +x test
+        - name: Run
           run: ./test
