@@ -7,6 +7,10 @@ jobs:
      name: Test, build and release
      runs-on: ubuntu-latest
      steps: 
+     - uses: actions/setup-java@v3
+       with:
+        distribution: 'zulu'
+        java-version: '17'
      - name: Download Files
        run:  | 
          wget https://github.com/revanced/revanced-cli/releases/download/v2.0.5/revanced-cli-2.0.5-all.jar 
