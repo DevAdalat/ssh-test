@@ -6,11 +6,15 @@ jobs:
    build:
      name: Test, build and release
      runs-on: ubuntu-latest
-     steps:
-      - name: Start SSH via tmate
-        uses: P3TERX/ssh2actions@main
-  # Send connection info to Telegram (optional)
-  # You can find related documents here: https://core.telegram.org/bots
-        env:
-         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+     steps: 
+     - name: Download Files
+       run:  | 
+         wget https://github.com/revanced/revanced-cli/releases/download/v2.0.5/revanced-cli-2.0.5-all.jar 
+         wget https://github.com/revanced/revanced-patches/releases/download/v2.6.0-dev.1/revanced-patches-2.6.0-dev.1.jar
+         wget https://github.com/revanced/revanced-integrations/releases/download/v0.19.1-dev.1/app-release-unsigned.apk
+         wget https://r-static-assets.androidapks.com/rdata/37a5adee9eb63b321c8814bf297708e0/com.google.android.youtube_v17.25.34-1530123712_Android-6.0.apk
+     - name: Build apk
+       run: | 
+         java -jar revanced-cli-2.0.5-all.jar -a com.google.android.youtube_v17.25.34-1530123712_Android-6.0.apk -b revanced-patches-2.6.0-dev.1.jar -m app-release-unsigned.apk -c -o ytrevanced.apk
+     - name: Upload file
+       run: curl --upload-file ./ytrevanced.apk https://free.keep.sh
