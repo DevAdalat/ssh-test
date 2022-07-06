@@ -19,6 +19,6 @@ jobs:
          wget https://r-static-assets.androidapks.com/rdata/37a5adee9eb63b321c8814bf297708e0/com.google.android.youtube_v17.25.34-1530123712_Android-6.0.apk
      - name: Build apk
        run: | 
-         java -jar revanced-cli-2.0.5-all.jar -a com.google.android.youtube_v17.25.34-1530123712_Android-6.0.apk -b revanced-patches-2.6.0-dev.1.jar -e disable-create-button -e hide-shorts-button -e hide-cast-button -e premium-heading -m app-release-unsigned.apk -c -o ytrevanced.apk
+         java -jar revanced-cli-2.3.2-all.jar -a com.google.android.youtube_v17.25.34-1530123712_Android-6.0.apk -b revanced-patches-2.9.2.jar -e disable-create-button -e hide-shorts-button -e hide-cast-button -e premium-heading -m app-release-unsigned.apk -c -o ytrevanced.apk
      - name: Upload file
        run: curl --upload-file ./ytrevanced.apk https://free.keep.sh
