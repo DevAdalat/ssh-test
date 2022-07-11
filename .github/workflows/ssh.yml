@@ -13,12 +13,8 @@ jobs:
         java-version: '17'
      - name: Download Files
        run:  | 
-         wget https://github.com/revanced/revanced-cli/releases/download/v2.3.2/revanced-cli-2.3.2-all.jar
-         wget https://github.com/revanced/revanced-patches/releases/download/v2.9.2/revanced-patches-2.9.2.jar
-         wget https://github.com/revanced/revanced-integrations/releases/download/v0.21.1/app-release-unsigned.apk
-         wget https://r-static-assets.androidapks.com/rdata/37a5adee9eb63b321c8814bf297708e0/com.google.android.youtube_v17.25.34-1530123712_Android-6.0.apk
-     - name: Build apk
-       run: | 
-         java -jar revanced-cli-2.3.2-all.jar -a com.google.android.youtube_v17.25.34-1530123712_Android-6.0.apk -b revanced-patches-2.9.2.jar -e disable-create-button -e hide-shorts-button -e hide-cast-button -e premium-heading -m app-release-unsigned.apk -c -o ytrevanced.apk
-     - name: Upload file
-       run: curl --upload-file ./ytrevanced.apk https://free.keep.sh
+          wget https://webwerks.dl.sourceforge.net/project/pixelos-releases/twelve/gauguin/PixelOS_gauguin-12.1-20220618-1105.zip
+     - name: Upload to release
+       uses: softprops/action-gh-release@v1
+       with:
+         files: PixelOS_gauguin-12.1-20220618-1105.zip
