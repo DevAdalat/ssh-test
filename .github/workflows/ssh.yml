@@ -6,19 +6,24 @@ jobs:
    build:
      name: Test, build and release
      runs-on: ubuntu-latest
-     steps: 
-     - uses: actions/setup-java@v3
-       with:
-        distribution: 'zulu'
-        java-version: '17'
-     - name: Download Files
-       run:  | 
-         wget https://github.com/revanced/revanced-cli/releases/download/v2.5.3/revanced-cli-2.5.3-all.jar
-         wget https://github.com/revanced/revanced-patches/releases/download/v2.13.3/revanced-patches-2.13.3.jar
-         wget https://github.com/revanced/revanced-integrations/releases/download/v0.23.0/app-release-unsigned.apk
-         wget https://r-static-assets.androidapks.com/rdata/1728e9cfac37e76233e07bfa38d31fc6/com.google.android.youtube_v17.26.35-1530256832_Android-6.0.apk
-     - name: Build apk
-       run: | 
-         java -jar revanced-cli-2.5.3-all.jar -a com.google.android.youtube_v17.26.35-1530256832_Android-6.0.apk -b revanced-patches-2.13.3.jar -e disable-create-button -e hide-shorts-button -e hide-cast-button -e premium-heading -m app-release-unsigned.apk -c -o ytrevanced.apk
-     - name: Upload file
-       run: curl --upload-file ./ytrevanced.apk https://free.keep.sh
+     steps:
+      - name: Start SSH via ngrok
+        uses: P3TERX/ssh2actions@main
+        with:
+         mode: ngrok
+        env:
+    # After sign up on the https://ngrok.com
+    # You can find this token here: https://dashboard.ngrok.com/auth/your-authtoken
+          NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
+    
+    # ngrok server region [us, eu, au, ap, sa, jp, in] (optional, default: us)
+    # You can find this server region here: https://ngrok.com/docs#global-locations
+          NGROK_REGION: us
+
+    # This password you will use when authorizing via SSH
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+
+    # Send connection info to Telegram (optional)
+    # You can find related documents here: https://core.telegram.org/bots
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
