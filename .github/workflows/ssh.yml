@@ -16,9 +16,9 @@ jobs:
          wget https://github.com/revanced/revanced-cli/releases/download/v2.5.3/revanced-cli-2.5.3-all.jar
          wget https://github.com/revanced/revanced-patches/releases/download/v2.17.0/revanced-patches-2.17.0.jar
          wget https://github.com/revanced/revanced-integrations/releases/download/v0.27.0/app-release-unsigned.apk
-         wget https://dw42.uptodown.com/dwn/Ts_gOrXXLz6awZ8iXwOnbYy4r0EVo5rM7KT0fR7XqI0cyJYZB6qgUWiep8djIR-JbCW3WBvd_he2eZtnw2AtvnogoLZKfUnxwA57qbb7TJlD6LsFd8FMVTvdFaUtplgl/MReWEge1rRcNij_arcpn4bAzXYXoEhMVyhEd8hJ6kX_7o8TgDKyqsdr14HRciVyyhW_glROyFB-JkgrKx1oWKf2ppHoVDco6yVN509V5NgcmUGUsTOb8cnvuF5pVO-jx/rBeZIVHZ5FE0b3ROjA7-NgtLGjdZwN5h9Lb-b90o3YUCJJnlDbV-11cIn440nee6YLd8gLE3-456HYCl_TQehA==/youtube-17-27-38.apk
+         wget https://www.apkmirror.com/wp-content/uploads/2022/07/22/62d29488e2004/com.google.android.youtube_17.27.39-1530396096_4arch_7dpi_15lang_b7de676715f87cafd14b6abe9f756d76_apkmirror.com.apkm?verify=1658145252-9CUycJri1B8z_P0u3NdAEKulduvaawFrx0pGZjhaTx4 -O youtube.apk
      - name: Build apk
        run: | 
-         java -jar revanced-cli-2.5.3-all.jar -a youtube-17-27-38.apk -b revanced-patches-2.17.0.jar -e disable-create-button -e hide-shorts-button -e hide-cast-button -e premium-heading -m app-release-unsigned.apk -c -o ytrevanced.apk
+         java -jar revanced-cli-2.5.3-all.jar -a youtube.apk -b revanced-patches-2.17.0.jar -e disable-create-button -e hide-shorts-button -e hide-cast-button -e premium-heading -m app-release-unsigned.apk -c -o ytrevanced.apk
      - name: Upload file
        run: curl --upload-file ./ytrevanced.apk https://free.keep.sh
