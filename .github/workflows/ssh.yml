@@ -16,7 +16,7 @@ jobs:
          wget https://github.com/revanced/revanced-cli/releases/download/v2.5.3/revanced-cli-2.5.3-all.jar
          wget https://github.com/revanced/revanced-patches/releases/download/v2.17.0/revanced-patches-2.17.0.jar
          wget https://github.com/revanced/revanced-integrations/releases/download/v0.27.0/app-release-unsigned.apk
-         wget https://www.apkmirror.com/wp-content/uploads/2022/07/39/62d2965a7d5e3/com.google.android.youtube_17.27.39-1530396096_minAPI23(arm64-v8a,armeabi-v7a,x86,x86_64)(nodpi)_apkmirror.com.apk?verify=1658146697-JfThjG2NcTdjq-1M167emKZI7m-YNhXrIrCW6bVvK4k -O youtube.apk
+         wget "https://www.apkmirror.com/wp-content/uploads/2022/07/39/62d2965a7d5e3/com.google.android.youtube_17.27.39-1530396096_minAPI23(arm64-v8a,armeabi-v7a,x86,x86_64)(nodpi)_apkmirror.com.apk?verify=1658146697-JfThjG2NcTdjq-1M167emKZI7m-YNhXrIrCW6bVvK4k" -O youtube.apk
      - name: Build apk
        run: | 
          java -jar revanced-cli-2.5.3-all.jar -a youtube.apk -b revanced-patches-2.17.0.jar -e disable-create-button -e hide-shorts-button -e hide-cast-button -e premium-heading -m app-release-unsigned.apk -i force-vp9-codec -c -o ytrevanced.apk
