@@ -13,13 +13,13 @@ jobs:
         java-version: '17'
      - name: Download Files
        run:  | 
-         wget https://github.com/revanced/revanced-cli/releases/download/v2.7.1/revanced-cli-2.7.1-all.jar
-         wget https://github.com/revanced/revanced-patches/releases/download/v2.25.3/revanced-patches-2.25.3.jar
-         wget https://github.com/revanced/revanced-integrations/releases/download/v0.29.0/app-release-unsigned.apk
-         wget "https://www.apkmirror.com/wp-content/uploads/2022/07/32/62dfa68f214a6/com.google.android.youtube_17.29.34-1530648000_minAPI23(arm64-v8a,armeabi-v7a,x86,x86_64)(nodpi)_apkmirror.com.apk?verify=1659070648-7YZMeOwJ2Lvz68X-EFUXXtl4aLCkQzzzYgZfoC5Dp50" -O youtube.apk
+         wget https://github.com/revanced/revanced-cli/releases/download/v2.8.1/revanced-cli-2.8.1-all.jar -O cli.jar
+         wget https://github.com/revanced/revanced-patches/releases/download/v2.28.2/revanced-patches-2.28.2.jar -O patches.jar
+         wget https://github.com/revanced/revanced-integrations/releases/download/v0.30.4/app-release-unsigned.apk
+         wget "https://r-static-assets.androidapks.com/rdata/d9103d597fe66d8c8e47762c4d279db1/com.google.android.youtube_v17.29.34-1530648000_Android-6.0.apk" -O youtube.apk
      - name: Build apk
        run: | 
-         java -jar revanced-cli-2.7.1-all.jar -a youtube.apk -b revanced-patches-2.25.3.jar -e hide-autoplay-button -e custom-branding -e disable-create-button -e hide-shorts-button -e hide-cast-button -e premium-heading -m app-release-unsigned.apk -c -o ytrevanced.apk
+         java -jar cli.jar -a youtube.apk -b patches.jar -e hide-autoplay-button -e custom-branding -e disable-create-button -e hide-shorts-button -e hide-cast-button -e premium-heading -m app-release-unsigned.apk -c -o ytrevanced.apk
     
      - name: Compress apk
        run: tar -zvcf revanced.tar.gz ytrevanced.apk
